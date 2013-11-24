@@ -1,0 +1,24 @@
+{
+  "name": "depender",
+  "version": "0.0.1",
+  "description": "a simple dependency injector based on Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/turingou/depender.git"
+  },
+  "keywords": [
+    "dependencyc",
+    "injector",
+    "inject",
+    "depends"
+  ],
+  "author": "turing <o.u.turing@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/turingou/depender/issues"
+  }
+}
