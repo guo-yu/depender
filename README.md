@@ -3,28 +3,30 @@
 A simple dependency injector.
 
 ### Installation
-````
+```bash
 $ npm install depender --save
-````
+```
 
 ### Example
-````javascript
+```js
 var Depender = require('depender');
-var dep = new Depender;
+var deps = new Depender
 
-dep.define('text', '123');
-dep.define('text2', 'demo222222');
-dep.define('functionOne', function(msg) {
-  console.log(msg);
-});
+deps
+  .define('text', 'Demo text 1')
+  .define('text2', 'Demo text 2')
+  .define('fn', function(message) {
+    console.log(message)
+  })
 
-dep.use(function(text2, text, functionOne, nonce) {
+deps.use(function(text2, text, fn, nonce) {
   console.log(text2);
   console.log(text);
-  functionOne('hi, im a function!');
   console.log(nonce) // undefined
-});
-````
+
+  fn('I\'m a function!')
+})
+```
 
 ### API
 
@@ -32,7 +34,7 @@ dep.use(function(text2, text, functionOne, nonce) {
 - depender.define(key,value);
 - depender.get(key);
 - depender.use(key[function(key1,key2,....)]);
-- depender.destory(key);
+- depender.remove(key);
 
 ### Contributing
 - Fork this repo
