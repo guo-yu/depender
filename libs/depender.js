@@ -1,46 +1,38 @@
-export default class Depender() {
+export default class Depender {
   constructor() {
-    this.modules = {}
+    this.deps = {}
   }
 
   define(name, fn) {
-    this.modules[name] = fn
-    return this.modules[name]
-  }
-
-  fetch(arguments) {
-    var funcs = []
-
-    arguments.forEach(argument => {
-      var name = trim(argument)
-      funcs.push(this.modules[name] || undefined)
-    })
-
-    return funcs
+    this.deps[name] = fn
+    return this
   }
 
   get(name) {
-    return this.modules[name] || null
+    return this.deps[name]
+  }
+
+  remove(name) {
+    const exist = this.get(name)
+
+    if (!exist)
+      return
+
+    delete this.deps[name]
+    return this
   }
 
   use(fn) {
-    if (typeof(fn) === 'string')
-      return this.get(fn)
+    if (typeof(fn) !== 'function')
+      return
 
-    if (typeof(fn) === 'function')
-      return fn.apply(fn, this.fetch(splitArguments(fn)))
+    fn.apply(
+      fn, 
+      splitArguments(fn)
+        .map(item => this.get(trim(item)))
+    )
 
-    return false
-  }
-
-  destory(name) {
-    const exist = name && this.modules[name]
-
-    if (!exist)
-      return false
-
-    delete this.modules[name]
-    return true
+    return this
   }
 }
 
