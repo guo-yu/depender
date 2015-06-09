@@ -41,9 +41,7 @@ function trim(s) {
 }
 
 function splitArguments(fn) {
-  let left = fn.toString().split(')')[0]
-  let params = left.substr(left.indexOf('(') + 1)
-  let arguments = params.split(',')
+  const left = fn.toString().split(')')[0]
 
-  return arguments
+  return left.substr(left.indexOf('(') + 1).split(',')
 }
