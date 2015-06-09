@@ -1,33 +1,34 @@
 ## depender ![npm](https://badge.fury.io/js/depender.png)
 
-a simple dependency injector based on Node.js
+A simple dependency injector.
 
 ### Installation
 ````
-$ npm install depender
+$ npm install depender --save
 ````
 
 ### Example
 ````javascript
 var Depender = require('depender');
-    dep = new Depender;
+var dep = new Depender;
 
 dep.define('text', '123');
 dep.define('text2', 'demo222222');
 dep.define('functionOne', function(msg) {
-    console.log(msg);
+  console.log(msg);
 });
 
 dep.use(function(text2, text, functionOne, nonce) {
-    console.log(text2);
-    console.log(text);
-    functionOne('hi, im a function!');
-    console.log(nonce) // undefined
+  console.log(text2);
+  console.log(text);
+  functionOne('hi, im a function!');
+  console.log(nonce) // undefined
 });
 ````
 
 ### API
 
+- new Depender()
 - depender.define(key,value);
 - depender.get(key);
 - depender.use(key[function(key1,key2,....)]);
@@ -62,7 +63,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
 
 ---
 ![docor](https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/doctor.png)
