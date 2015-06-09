@@ -1,8 +1,11 @@
 {
   "name": "depender",
-  "version": "0.1.0",
-  "description": "a simple dependency injector based on Node.js",
-  "main": "index.js",
+  "version": "0.2.0",
+  "description": "a simple dependency injector",
+  "main": "dist/depender.js",
+  "scripts": {
+    "build": "node_modules/.bin/babel libs --out-dir dist --source-maps --watch"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/turingou/depender.git"
@@ -17,5 +20,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/turingou/depender/issues"
+  },
+  "devDependencies": {
+    "babel": "5.1.11"
   }
 }
