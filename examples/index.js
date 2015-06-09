@@ -1,15 +1,17 @@
-var Depender = require('../index');
-    dep = new Depender;
+var Depender = require('../dist/depender')
+var deps = new Depender
 
-dep.define('text', '123');
-dep.define('text2', 'demo222222');
-dep.define('functionOne', function(msg) {
-    console.log(msg);
-});
+deps
+  .define('text', 'Demo text 1')
+  .define('text2', 'Demo text 2')
+  .define('fn', function(message) {
+    console.log(message)
+  })
 
-dep.use(function(text2, text, functionOne, nonce) {
-    console.log(text2);
-    console.log(text);
-    functionOne('hi, im a function!');
-    console.log(nonce) // undefined
-});
+deps.use(function(text2, text, fn, nonce) {
+  console.log(text2);
+  console.log(text);
+  console.log(nonce) // undefined
+
+  fn('I\'m a function!')
+})
